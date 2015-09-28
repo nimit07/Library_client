@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block title %}New Post{% endblock %}
+
+{% block content %}
+  <h1>New Post</h1>
+  <p>Create a new post.</p>
+  <form action="/branch" method="post">
+    <p><input type="text" placeholder="Branch Name" name="branch"></p>
+    <p><input type="text"  placeholder="Total Books"name="total_books"></p>
+    <p><input type="submit" value="submit"></p>
+  </form>
+{% endblock %}

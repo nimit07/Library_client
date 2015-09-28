@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block title %}New Post{% endblock %}
+
+{% block content %}
+  <h1>{{form.branch}}</h1>
+  <p>Update Branch.</p>
+  <form action="/bpb/branch/{{form.branch}}" method="post">
+    <p><input type="text" placeholder="Branch Name" name="branch" value="{{form.branch}}"></p>
+
+    <p><input type="submit" value="submit"></p>
+  </form>
+{% endblock %}

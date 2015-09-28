@@ -14,5 +14,16 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nimit07/blog_koa/issues"
+  },
+  "dependencies": {
+    "co-body": "^4.0.0",
+    "co-views": "^2.1.0",
+    "koa": "^1.0.0",
+    "koa-logger": "^1.3.0",
+    "koa-request": "^1.0.0",
+    "koa-route": "^2.4.2",
+    "koa-router": "^5.1.2",
+    "mongo": "^0.1.0",
+    "swig": "^1.4.2"
   }
 }

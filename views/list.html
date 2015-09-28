@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+  <h1>Books Per Branch </h1>
+  <p>You have <strong>{{ info.length }}</strong> branches!</p>
+  <p><a href="/branch/new">Create a branch</a></p>
+  <ul id="posts">
+    {% for data in info %}
+      <li>
+        <h2>branch:</h2><em>{{ data.branch }}</em>
+        <h3>Total Books:</h3>{{data.total_books}}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
