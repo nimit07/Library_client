@@ -127,17 +127,18 @@ console.log(data);
  */
 function *del(branch){
 var options = {
-        url: 'http://127.0.0.1:8000/library/branch-view/'+branch,
+        url: 'http://127.0.0.1:8000/library/branch-view/'+this.params.branch,
 
 
     };
 
-    var response = yield request.delete(options); //Yay, HTTP requests with no callbacks!
-    var info = JSON.parse(response.body);
+    var response =  request.delete(options); //Yay, HTTP requests with no callbacks!
+    yield response;
 
 
 
-  this.body = yield render('list', { info: info });
+
+  this.redirect('/');
 
 
 }
