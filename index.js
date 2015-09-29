@@ -34,7 +34,7 @@ router
     .post('/bpb/branch/:branch', update)
     .post('/bpb/del/:branch', deleteI)
     .post('/branch', create)
-    .get('/branch/del/:branch', del);
+    .get('/branch/del/', del);
 
 // route definitions
 

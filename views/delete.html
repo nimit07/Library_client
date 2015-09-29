@@ -1,16 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>delete</title>
+{% extends 'layout.html' %}
 
-</head>
-<body>
- <p>Delete Branch.</p>
-  <form action="/bpb/del/{{form.branch}}" method="post">
+{% block title %}New Post{% endblock %}
+{%block content%}
 
+ <p>Delete Branch</p>
+<form id="myForm" >
+    <p><input type="text" placeholder="Branch Name" name="branch" ></p>
 
     <p><input type="submit" value="submit"></p>
-  </form>
-</body>
-</html>
+    </form>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+var branch={};
+$('#myForm').submit(function() {
+
+    var $inputs = $('#myForm :input');
+
+
+    $inputs.each(function() {
+        branch[this.name] = $(this).val();
+    });
+    $.ajax({
+    url: 'http://127.0.0.1:8000/library/branch-view/'+branch['branch']+'/',
+    type: 'DELETE',
+    success: function(result) {
+       alert('Branch Deleted');
+    }
+
+});
+
+});
+
+
+</script>
+
+
+{%endblock%}
+
