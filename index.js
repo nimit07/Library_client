@@ -21,7 +21,7 @@ var posts = [];
 app.use(logger());
 app
   .use(router.routes())
-  .use(router.allowedMethods());
+ // .use(router.allowedMethods());
 // route middleware
 
 //app.use(router.get('/', list));
@@ -32,8 +32,9 @@ router
     .get('/branch/new', add)
     .get('/update/branch/:branch', show)
     .post('/bpb/branch/:branch', update)
+    .post('/bpb/del/:branch', deleteI)
     .post('/branch', create)
-    .delete('/branch/del/:branch', del);
+    .get('/branch/del/:branch', del);
 
 // route definitions
 
@@ -63,7 +64,9 @@ function *add() {
 
   this.body = yield render('new');
 }
-
+function *del(){
+this.body=yield render('delete');
+}
 /**
  * Show post :id.
  */
@@ -86,7 +89,7 @@ function *show(branch) {
  function *update(branch) {
   var data = yield parse(this);
   var options = {
-        url: 'http://127.0.0.1:8000/library/branch-view/'+this.params.branch,
+        url: 'http://127.0.0.1:8000/library/branch-view/'+this.params.branch+'/',
         body: JSON.stringify(data),
 
     };
@@ -94,8 +97,8 @@ function *show(branch) {
     var response = request.put(options); //Yay, HTTP requests with no callbacks!
 
     yield response;
-    this.body= response;
-
+    //this.body= response;
+    this.redirect('/');
 
     //var info = JSON.parse(response.body);
 
@@ -125,14 +128,14 @@ console.log(data);
 /**
  * Delete a post.
  */
-function *del(branch){
+function *deleteI(branch){
 var options = {
-        url: 'http://127.0.0.1:8000/library/branch-view/'+this.params.branch,
+        url: 'http://127.0.0.1:8000/library/branch-view/'+this.params.branch+'/',
 
 
     };
 
-    var response =  request.delete(options); //Yay, HTTP requests with no callbacks!
+    var response =  request.del(options); //Yay, HTTP requests with no callbacks!
     yield response;
 
 
